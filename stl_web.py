@@ -1,6 +1,9 @@
 import requests as req
 
-#Изначально библиотека requests не установлена. Устаовка: pip install requests
+#Изначально библиотека requests не установлена. 
+# Устаовка: 
+# Linux(Виртуальная машина): pip install requests
+# Windows conda install requests
 
 our_cite = req.get("https://cpp-python-nsu.inp.nsk.su/textbook")
 
@@ -88,13 +91,26 @@ from datetime import date #поможет нам получить текующу
 
 cur_date = date.today() #полчаем
 
-fact = req.get(f"http://numbersapi.com/{cur_date.month}/{cur_date.day+1}/date?json=true")
+fact = req.get(f"http://numbersapi.com/{cur_date.month}/{cur_date.day}/date?json=true")
 
 print(json.loads(fact.text)["text"])
 
 
-#edamam - сервис, который поможет нам подобрать рецепты из имеющихся продуктов https://www.edamam.com/
 #google translate api - позволяет использовать некоторые функции google-translate (не уверен, что бесплатно)
 
-#выше еще два API, о которых я может быть расскажу на следующем занятии
+#тут использование API происходит через специальную библиотеку
+
+#pip install googletrans==3.1.0a0
+import googletrans
+
+print(googletrans.LANGUAGES)
+#Много языков в словаре
+
+translator = googletrans.Translator()
+res = translator.translate(fact.text, src="en", dest="ru")
+print(res.text)
+#Перевело (Надеюсь)
+#Есть еще много полезных и не очень API, 
+# которые можно использовать для своих проектов! 
+#P.S. и еще больше платных API, которые использовать нельзя/дорого
 pass
