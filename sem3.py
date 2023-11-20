@@ -66,11 +66,52 @@ print(next(my_gen),end=" ")
 #можно переберать в цикле
 
 for next_element in my_gen:
-    print(next_element, end="")
+    print(next_element, end=" ")
     if (next_element >= 100):
-        break #иначе очень долго ждать
+        break #иначе цикл будет ОЧЕНЬ долгим
 
 #Определение, от которого не легче: генератор - это итератор, 
 #который можно перебрать лишь один раз
+
+#Итератор - это объект, который может по очереди перебирать элементы контейнера,
+# при помощи функции next
+
+#итератор можно сделать из любого контейнера или сторки
+str_it = iter("\nHi!")
+
+print(next(str_it))
+print(next(str_it))
+print(next(str_it))
+
+#генераторы можно создавать, как функции
+
+def factorail_func(n):
+    fac = 1
+    res = []
+    for i in range(1, n+1):
+        fac*=i
+        res.append(fac)
+    return res
+
+
+def factorail_gen(n):
+    fac = 1
+    for i in range(1, n+1):
+        fac*=i
+        yield fac
+        print("I'am here!")
+
+
+res1 = factorail_func(10)
+
+res2 = factorail_gen(10)
+
+for n in res2:
+    print(n)
+
+
+#Работа с интернетом
+import requests
+
 
 
