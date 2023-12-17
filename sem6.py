@@ -150,4 +150,5 @@ if __name__ == "__main__":
         zeros_lst += "some_str"
     except Exception as ex:
         print(ex)
+        
     x = hinted_func(1,1,1,1,1)
